@@ -1,0 +1,14 @@
+---
+import Layout from "../layouts/default.astro";
+import { Question, db, eq, FALSE } from "astro:db";
+
+const questions = await db.select().from(Question).where(eq(Question.answered, FALSE));
+---
+<Layout>
+  <p>Asked questions:</p>
+  <ul>
+    { questions.map((question) => (
+      <li>{question.question}</li>
+    ))}
+  </ul>
+</Layout>

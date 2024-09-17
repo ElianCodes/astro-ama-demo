@@ -1,16 +1,18 @@
 ---
+import { actions } from 'astro:actions';
+import QuestionForm from '../components/questionForm.astro';
+import Footer from '../components/footer.astro';
+import Layout from '../layouts/default.astro';
 
+const result = Astro.getActionResult(actions.submitQuestion);
+if (result && !result.error) {
+  return Astro.redirect(`/success`);
+}
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout>
+	<h1 class="text-center">Ask Elian a question</h1>
+	<QuestionForm />
+	<Footer />
+</Layout>
+
