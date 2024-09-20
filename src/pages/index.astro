@@ -1,18 +1,25 @@
 ---
 import { actions } from 'astro:actions';
 import QuestionForm from '../components/questionForm.astro';
-import Footer from '../components/footer.astro';
 import Layout from '../layouts/default.astro';
 
-const result = Astro.getActionResult(actions.submitQuestion);
-if (result && !result.error) {
-  return Astro.redirect(`/success`);
-}
+// const result = Astro.getActionResult(actions.submitQuestion);
+// if (result && !result.error) {
+//   return Astro.redirect(`/success`);
+// }
+
+export const prerender = false;
 ---
 
 <Layout>
-	<h1 class="text-center">Ask Elian a question</h1>
-	<QuestionForm />
-	<Footer />
+	<div class="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+		<div class="max-w-md w-full bg-white rounded-lg shadow-md">
+			<div class="p-6 border-b border-gray-200">
+				<h2 class="text-2xl font-semibold text-gray-800 text-center">Ask Me Anything</h2>
+				<p class="text-gray-500 text-center mt-2 text-sm">Your questions are anonymous</p>
+			</div>
+			<QuestionForm />
+		</div>
+	</div>
 </Layout>
 
