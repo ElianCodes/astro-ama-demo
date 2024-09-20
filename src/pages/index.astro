@@ -1,12 +1,6 @@
 ---
-import { actions } from 'astro:actions';
-import QuestionForm from '../components/questionForm.astro';
+import QuestionForm from '../components/questionForm';
 import Layout from '../layouts/default.astro';
-
-const result = Astro.getActionResult(actions.submitQuestion);
-if (result && !result.error) {
-  return Astro.redirect(`/success`);
-}
 
 export const prerender = false;
 ---
@@ -18,7 +12,7 @@ export const prerender = false;
 				<h2 class="text-2xl font-semibold text-gray-800 text-center">Ask Me Anything</h2>
 				<p class="text-gray-500 text-center mt-2 text-sm">Your questions are anonymous</p>
 			</div>
-			<QuestionForm />
+			<QuestionForm client:load />
 		</div>
 	</div>
 </Layout>
