@@ -3,10 +3,10 @@ import { actions } from 'astro:actions';
 import QuestionForm from '../components/questionForm.astro';
 import Layout from '../layouts/default.astro';
 
-// const result = Astro.getActionResult(actions.submitQuestion);
-// if (result && !result.error) {
-//   return Astro.redirect(`/success`);
-// }
+const result = Astro.getActionResult(actions.submitQuestion);
+if (result && !result.error) {
+  return Astro.redirect(`/success`);
+}
 
 export const prerender = false;
 ---
